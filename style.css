@@ -1,56 +1,68 @@
-.custom-dropdown {
-  position: relative;
-  appearance: none;
-  background: none;
-  border: none;
-  font-size: 18px;
-  font-family: Arial, sans-serif;
-  text-transform: uppercase;
-  cursor: pointer;
-  padding: 0;
+.collection-container {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
+.custom-dropdown {
+  appearance: none;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background: #f9f9f9;
+  cursor: pointer;
+  flex-grow: 1;
+  max-width: 300px;
 }
 
 .custom-dropdown::after {
-  content: "▼"; /* Dropdown arrow */
-  font-size: 12px;
-  margin-left: 10px;
+  content: "▼";
+  font-size: 10px;
+  color: #333;
 }
 
-.custom-dropdown option {
-  font-family: Arial, sans-serif;
-  text-transform: capitalize;
-}
-
+/* Arrow buttons */
 .custom-arrows {
   display: flex;
   align-items: center;
+  justify-content: center;
   font-size: 20px;
-  gap: 15px;
-  cursor: pointer;
-}
-
-.custom-arrows span {
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.custom-arrows span:hover {
-  transform: scale(1.1);
 }
 
 .arrow {
   cursor: pointer;
+  padding: 10px;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .arrow:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .arrow[style*="pointer-events: none"] {
   cursor: not-allowed;
-  transform: none;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .collection-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .custom-dropdown {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  .arrow {
+    font-size: 18px;
+  }
 }
