@@ -1,15 +1,37 @@
-<div class="collection-container">
-  <div class="custom-arrows">
-    <span id="prev-arrow" class="arrow">‹</span>
+<div class="dropdown-container">
+  <!-- Collection Dropdown -->
+  <div class="collection-container">
+    <div class="custom-arrows">
+      <span id="prev-arrow" class="arrow">‹</span>
+    </div>
+    <select id="collection-filter" class="custom-dropdown">
+      {% for collection in collections %}
+        <option
+          value="{{ collection.url }}"
+          {% if forloop.first %}
+            selected
+          {% endif %}
+        >
+          {{ collection.title }}
+        </option>
+      {% endfor %}
+    </select>
+    <div class="custom-arrows">
+      <span id="next-arrow" class="arrow">›</span>
+    </div>
   </div>
-  <select id="collection-filter" class="custom-dropdown">
-    {% for collection in collections %}
-      <option value="{{ collection.url }}" {% if forloop.first %}selected{% endif %}>
-        {{ collection.title }}
-      </option>
-    {% endfor %}
-  </select>
-  <div class="custom-arrows">
-    <span id="next-arrow" class="arrow">›</span>
+
+  <!-- Vendor Dropdown -->
+  <div class="vendor-container">
+    <select id="vendor-filter" class="custom-dropdown">
+      <option value="">All Vendors</option>
+      {% for product in products %}
+        {% assign vendor = product.vendor %}
+        {% unless vendors contains vendor %}
+          {% capture vendors %}{{ vendors | append: ',' | append: vendor }}{% endcapture %}
+          <option value="{{ vendor }}">{{ vendor }}</option>
+        {% endunless %}
+      {% endfor %}
+    </select>
   </div>
 </div>
