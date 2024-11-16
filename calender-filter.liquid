@@ -1,0 +1,16 @@
+<div class="custom-arrows">
+  <span id="prev-arrow" class="arrow">‹</span>
+  <select id="collection-filter" class="custom-dropdown">
+    {% for collection in collections %}
+      <option
+        value="{{ collection.url }}"
+        {% if forloop.first %}
+          selected
+        {% endif %}
+      >
+        {{ collection.title }}
+      </option>
+    {% endfor %}
+  </select>
+  <span id="next-arrow" class="arrow">›</span>
+</div>

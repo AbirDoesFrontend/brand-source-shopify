@@ -1,0 +1,56 @@
+.custom-dropdown {
+  position: relative;
+  appearance: none;
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.custom-dropdown::after {
+  content: "▼"; /* Dropdown arrow */
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.custom-dropdown option {
+  font-family: Arial, sans-serif;
+  text-transform: capitalize;
+}
+
+.custom-arrows {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.custom-arrows span {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.custom-arrows span:hover {
+  transform: scale(1.1);
+}
+
+.arrow {
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.arrow:hover {
+  transform: scale(1.1);
+}
+
+.arrow[style*="pointer-events: none"] {
+  cursor: not-allowed;
+  transform: none;
+}
