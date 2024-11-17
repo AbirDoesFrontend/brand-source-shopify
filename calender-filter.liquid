@@ -2,10 +2,15 @@
   <div class="dropdown-container">
     <!-- Collection Dropdown -->
     <div class="collection-container">
-      <div class="custom-arrows">
-        <span id="prev-arrow" class="arrow">‹</span>
+      <div class="collection-arrow">
+        <div class="custom-arrows">
+          <span id="prev-arrow" class="arrow">‹</span>
+        </div>
+        <div class="custom-arrows">
+          <span id="next-arrow" class="arrow">›</span>
+        </div>
       </div>
-      <select id="collection-filter" class="custom-dropdown">
+      <select id="collection-filter" class="collection-custom-dropdown">
         {% for collection in collections %}
           <option
             value="{{ collection.url }}"
@@ -17,24 +22,26 @@
           </option>
         {% endfor %}
       </select>
-      <div class="custom-arrows">
-        <span id="next-arrow" class="arrow">›</span>
-      </div>
     </div>
 
-    <!-- Vendor Dropdown -->
-    <div class="vendor-container">
-      <select id="vendor-filter" class="custom-dropdown">
-        <option value="">Brands</option>
-        {% assign vendors = '' %}
-        {% for product in products %}
-          {% assign vendor = product.vendor %}
-          {% unless vendors contains vendor %}
-            {% capture vendors %}{{ vendors | append: ',' | append: vendor }}{% endcapture %}
-            <option value="{{ vendor }}">{{ vendor }}</option>
-          {% endunless %}
-        {% endfor %}
-      </select>
+    <div class="end-filter-wrapper">
+      <!-- Vendor Dropdown -->
+      <div class="vendor-container">
+        <select id="vendor-filter" class="vendor-custom-dropdown styled-dropdown">
+          <option value="">Brand</option>
+          {% assign vendors = '' %}
+          {% for product in products %}
+            {% assign vendor = product.vendor %}
+            {% unless vendors contains vendor %}
+              {% capture vendors %}{{ vendors | append: ',' | append: vendor }}{% endcapture %}
+              <option value="{{ vendor }}">{{ vendor }}</option>
+            {% endunless %}
+          {% endfor %}
+        </select>
+      </div>
+
+      {% comment %} Jump To Btn {% endcomment %}
+      <button class="jump-to-today-button">Jump to Today</button>
     </div>
   </div>
 
@@ -60,9 +67,11 @@
           data-visible="false"
         {% endif %}
       >
-        <a href="{{ product.url }}">
-          <h3>{{ product.title }}</h3>
-          <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+        <a href="{{ product.url }}" class="product-ancor">
+          <div class="product-title-wrapper">
+            <h3 class="product-title">{{ product.title }}</h3>
+          </div>
+          <img class="product-image" src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
         </a>
       </div>
     {% endfor %}

@@ -1,29 +1,64 @@
 .dropdown-container {
   display: flex;
   justify-content: space-between;
+  padding: 20px;
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 10px;
+  border-bottom: 1px solid #333;
 }
 
 .collection-container,
 .vendor-container {
-  flex: 1;
-  max-width: 48%;
+  display: flex;
+  align-items: center;
 }
 
-.custom-dropdown {
+.collection-custom-dropdown {
+  appearance: none;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  width: 100%;
+  text-transform: uppercase;
+}
+.vendor-custom-dropdown {
   appearance: none;
   border: 1px solid #ccc;
-  padding: 10px 20px;
+  padding: 10px;
   font-size: 16px;
   font-family: Arial, sans-serif;
   border-radius: 4px;
   background: #f9f9f9;
   cursor: pointer;
-  width: 100%;
+  width: 270px;
   text-transform: uppercase;
+}
+
+.jump-to-today-button{
+    appearance: none;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  border-radius: 4px;
+  background: #f9f9f9;
+  cursor: pointer;
+  width: 270px;
+  text-transform: uppercase;
+}
+
+.end-filter-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.collection-arrow{
+    display: flex;
+    align-items: center;
 }
 
 .custom-arrows {
@@ -48,6 +83,67 @@
   opacity: 0.5;
 }
 
+/* Styled Dropdowns */
+.styled-dropdown {
+    appearance: none;
+    border: 1px solid #ddd;
+    background-color: #f8f5f0; /* Light beige background */
+    color: #000;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-family: "Arial", sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    width: 200px;
+    position: relative;
+  }
+  
+  .styled-dropdown:focus {
+    outline: none;
+    border-color: #333;
+  }
+  
+  /* Dropdown arrow (customized arrow style) */
+  .styled-dropdown::after {
+    content: "▼"; /* Dropdown arrow */
+    position: absolute;
+    right: 20px;
+    pointer-events: none;
+  }
+  
+  /* Jump to Today button */
+  .jump-to-today-button {
+    background-color: #f8f5f0; /* Matching the dropdown */
+    border: 1px solid #ddd;
+    color: #000;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-family: "Arial", sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    width: 200px;
+  }
+  
+  .jump-to-today-button:hover {
+    background-color: #eee; /* Slightly darker on hover */
+    border-color: #333;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .dropdown-container {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .styled-dropdown,
+    .jump-to-today-button {
+      width: 100%; /* Make dropdowns and button full width on smaller screens */
+    }
+  }
+
 @media (max-width: 768px) {
   .dropdown-container {
     flex-direction: column;
@@ -62,5 +158,60 @@
   .custom-dropdown {
     font-size: 14px;
     padding: 8px 15px;
+  }
+}
+
+/* Container with max-width and auto margins */
+.container {
+  max-width: 1440px;
+  margin: 100px auto;
+  border: 1px solid #333;
+}
+
+/* Grid layout for product list */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 products per row */
+}
+
+/* Styling for product items */
+.product-item {
+  border: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.product-item img {
+  width: 100%;
+  height: auto;
+}
+
+.product-image{
+    padding: 15px;
+}
+
+.product-item h3 {
+  font-size: 1.2em;
+  padding-left: 15px;
+  color: #333;
+}
+
+.product-title-wrapper{
+    border-bottom: 1px solid #333;
+}
+
+.product-title{
+    text-decoration: none;
+}
+
+/* Responsive layout adjustments */
+@media (max-width: 900px) {
+  .product-list {
+    grid-template-columns: repeat(2, 1fr); /* 2 products per row */
+  }
+}
+
+@media (max-width: 600px) {
+  .product-list {
+    grid-template-columns: 1fr; /* 1 product per row */
   }
 }
